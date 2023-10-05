@@ -8,7 +8,7 @@ public class FirstLast6 {
 		
         boolean resultat = tableau.length > 0 && (tableau[0] == 6 || tableau[tableau.length - 1] == 6);
         System.out
-				.println("resultat : " + resultat);
+				.println("resultat (FirstLast6): " + resultat);
 
 	}
 
