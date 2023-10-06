@@ -4,57 +4,64 @@ import java.util.Scanner;
 
 public class InteractifStockageNombre {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            int[] array = new int[5];
+            int size = 0;
 
-		try (Scanner scanner = new Scanner(System.in)) {
-			int[] array = new int[5];
-			int size = 0;
+            System.out.println("Welcome to the Fun Number Storage Game!");
+            System.out.println("*****************************************");
 
-			while (true) {
-				System.out.println("********************************");
-				showMenu();
-				int choice = scanner.nextInt();
-				switch (choice) {
-				case 1:
-					if (size == array.length) {
-						int[] newArray = new int[array.length * 2];
-						System.arraycopy(array, 0, newArray, 0,
-								array.length);
-						array = newArray;
-					}
+            while (true) {
+                showMenu();
+                int choice = getUserChoice(scanner);
 
-					System.out.print("Enter a number to add: ");
-					int number = scanner.nextInt();
-					array[size] = number;
-					size++;
-					System.out.println("Number added successfully.");
-					break;
+                switch (choice) {
+                    case 1:
+                        if (size == array.length) {
+                            int[] newArray = new int[array.length * 2];
+                            System.arraycopy(array, 0, newArray, 0, array.length);
+                            array = newArray;
+                        }
 
-				case 2:
-					if (size == 0) {
-						System.out.println("The array is empty.");
-					} else {
-						System.out.println("Existing numbers:");
-						for (int i = 0; i < size; i++) {
-							System.out.print(array[i] + " | ");
-						}
-						System.out.println();
-					}
-					break;
+                        System.out.print("Enter a number to add: ");
+                        int number = scanner.nextInt();
+                        array[size] = number;
+                        size++;
+                        System.out.println("Number added successfully!");
+                        break;
 
-				default:
-					System.out.println(
-							"Invalid choice. Please enter 1 or 2.");
-				}
-			}
-		}
-	}
+                    case 2:
+                        if (size == 0) {
+                            System.out.println("The storage chest is empty.");
+                        } else {
+                            System.out.println("Numbers in the storage chest:");
+                            for (int i = 0; i < size; i++) {
+                                System.out.print(array[i] + " | ");
+                            }
+                            System.out.println();
+                        }
+                        break;
 
-	private static void showMenu() {
-		System.out.println("Menu :");
-		System.out.println("1. Ajouter un nombre");
-		System.out.println("2. Afficher les nombres existants");
-		System.out.print("Choisissez une option : ");
+                    default:
+                        System.out.println("Invalid choice. Please enter 1 or 2.");
+                }
+            }
+        }
+    }
 
-	}
+    private static void showMenu() {
+        System.out.println("Menu:");
+        System.out.println("1. Add a Number");
+        System.out.println("2. Display Stored Numbers");
+        System.out.print("Choose an option: ");
+    }
+
+    private static int getUserChoice(Scanner scanner) {
+        while (!scanner.hasNextInt()) {
+            System.out.println("Invalid choice. Please enter 1 or 2.");
+            scanner.next(); 
+        }
+        return scanner.nextInt();
+    }
 }

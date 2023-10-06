@@ -4,23 +4,29 @@ import java.util.Scanner;
 
 public class InteractifPlusGrand {
 
-	public static void main(String[] args) {
-		try (Scanner scanner = new Scanner(System.in)) {
-			int max = Integer.MIN_VALUE;
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Bienvenue dans le jeu du Plus Grand Nombre !");
+            System.out.println("-----------------------------------");
 
-			for (int i = 0; i < 10; i++) {
-				System.out.print("Enter a number: ");
-				int nb = scanner.nextInt();
+            int max = Integer.MIN_VALUE;
 
-				if (nb > max) {
-					max = nb;
-				}
-			}
+            for (int i = 0; i < 10; i++) {
+                System.out.print("Entrez un nombre : ");
+                int nb = scanner.nextInt();
 
-			System.out
-					.println("The greatest number you provided is " + max);
-		}
+                if (nb > max) {
+                    max = nb;
+                    System.out.println("Nouveau record ! Vous avez trouvé un nombre encore plus grand.");
+                } else {
+                    System.out.println("Essayez de trouver un nombre plus grand.");
+                }
+            }
 
-	}
-
+            System.out.println("\nBravo ! Le plus grand nombre que vous avez trouvé est : " + max);
+            System.out.println("Vous êtes un véritable champion !");
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("Erreur : Entrez un nombre valide !");
+        }
+    }
 }

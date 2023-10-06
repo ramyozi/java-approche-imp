@@ -4,18 +4,24 @@ import java.util.Scanner;
 
 public class InteractifFibonacci {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print("Enter position N in the Fibonacci sequence : ");
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Bienvenue dans le programme interactif de la suite de Fibonacci !");
+            System.out.println("-----------------------------------");
+
+            System.out.print("Entrez la position N dans la suite de Fibonacci : ");
             int n = scanner.nextInt();
 
             if (n < 0) {
-                System.out.println("N can't be a negative number.");
+                System.out.println("N ne peut pas être un nombre négatif.");
             } else {
                 long result = fibonacci(n);
-                System.out.println("The number at position N in the Fibonacci sequence is : " + result);
+                System.out.println("Le nombre à la position N dans la suite de Fibonacci est : " + result);
+                System.out.println("C'est magique, n'est-ce pas ?!");
             }
+        } catch (java.util.InputMismatchException e) {
+            System.err.println("Erreur : Entrez une position valide !");
         }
     }
 
@@ -34,6 +40,4 @@ public class InteractifFibonacci {
 
         return fibArray[n];
     }
-	}
-
-
+}
